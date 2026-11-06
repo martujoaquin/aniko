@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">AniKō</string>
+
+    <string name="search_anime">Search anime...</string>
+    <string name="explore_anime">Explore Anime</string>
+
+    <string name="animes">Animes</string>
+    <string name="favorites">Favorites</string>
+    <string name="my_favorites">My Favorites</string>
+
+    <string name="no_favorites">No favorites yet</string>
+    <string name="no_favorites_description">
+        Add anime to your favorites and they\'ll appear here.
+    </string>
+    <string name="no_anime_to_show">No anime to show</string>
+
+    <string name="back">Back</string>
+    <string name="score">Score</string>
+    <string name="episodes">Episodes</string>
+    <string name="status">Status</string>
+    <string name="genres">Genres</string>
+    <string name="synopsis">Synopsis</string>
+
+    <string name="anime_cover">Anime cover</string>
+    <string name="add_to_favorites">Add to favorites</string>
+
+    <string name="score_value">Score: %1$s</string>
+</resources>
