@@ -1,128 +1,51 @@
 # AniKō
 
-<p align="center">
-  <img src="app/src/main/res/drawable/aniko_logo.png" alt="AniKō logo" width="320"/>
-</p>
+AniKō es una aplicación Android desarrollada en Kotlin para explorar, buscar y guardar animes utilizando la API pública Kitsu.
 
-AniKō is an Android anime catalog application developed in Kotlin. It allows users to explore anime, search by title, view detailed information, save favorites locally, and consult saved anime offline.
+## Funcionalidades
 
-## Demo Video
+- Mostrar un catálogo de animes.
+- Buscar animes por nombre en tiempo real.
+- Ver portada, título y puntuación.
+- Ver el detalle completo de un anime.
+- Mostrar sinopsis, géneros, cantidad de episodios, estado e imagen.
+- Agregar y eliminar animes de favoritos.
+- Guardar favoritos localmente con SQLite.
+- Consultar favoritos y sus datos sin conexión.
+- Mostrar mensajes cuando no hay resultados o cuando ocurre un error de red.
 
-[Watch the AniKō demo video](https://drive.google.com/file/d/1dv4BMQOyd_5aWDu7dFkY6RiKE4Op2Gy9/view?usp=sharing)
+## API utilizada
 
-## Features
+La aplicación consume la API pública:
 
-- Anime catalog loaded from the Kitsu API
-- Real-time search by anime title
-- Anime cards with cover image, title and score
-- Detailed anime screen built with Jetpack Compose
-- Full synopsis, genres, episode count, status and large image
-- Add and remove favorites
-- Local persistence with SQLite
-- Favorites available offline
-- Offline access to saved anime details
-- Network error handling
-- Splash screen with AniKō branding
+Kitsu API
 
-## Architecture
+Endpoints utilizados:
 
-The project follows the MVVM architecture used throughout the course:
+- `anime` para obtener el listado de animes.
+- `anime?filter[text]=...` para realizar búsquedas.
+- `anime/{id}` para obtener el detalle completo.
+- `include=categories` para obtener los géneros.
 
-```
-View (Activity / Fragment / Compose)
-              ↓
-          ViewModel
-              ↓
-          Repository
-           ↙      ↘
-      Retrofit   SQLite
-        API       Local DB
-```
+## Arquitectura
 
-The UI observes data exposed by the ViewModel, while the Repository centralizes access to both remote and local data sources.
+La aplicación está organizada siguiendo el patrón MVVM:
 
-## Technologies
+- `Activity` y `Fragment`: muestran la interfaz y observan los datos.
+- `ViewModel`: maneja la lógica de presentación y expone datos con LiveData.
+- `Repository`: centraliza el acceso a la API y a SQLite.
+- `Retrofit Service`: define las peticiones HTTP a Kitsu.
+- `SQLiteOpenHelper`: administra la persistencia local de favoritos.
+- `Model`: representa los datos utilizados por la aplicación.
 
-- Kotlin
-- MVVM
-- Repository pattern
-- Android Views + XML
-- Fragments
-- RecyclerView
-- ListAdapter + DiffUtil
-- ViewBinding
-- LiveData
-- Coroutines
-- Retrofit
-- Gson
-- Kitsu API
-- Picasso
-- SQLite
-- Jetpack Compose
-- Material Components
+## Pantallas principales
 
-## API
+- `SplashActivity`: pantalla inicial con el logo de AniKō.
+- `MainActivity`: contenedor principal de fragments.
+- `AnimeListFragment`: catálogo y buscador con RecyclerView.
+- `FavoritesFragment`: listado de favoritos guardados en SQLite.
+- `AnimeDetailActivity`: detalle del anime desarrollado con Jetpack Compose.
 
-The application consumes the public Kitsu API:
+## Video demostrativo
 
-```
-https://kitsu.io/api/edge/
-```
-
-Main operations used by the app include:
-
-- Anime listing
-- Search by text
-- Anime detail
-- Categories/genres included in detail requests
-
-## Local Persistence
-
-Favorite anime are stored in a local SQLite database.
-
-Saved information includes:
-
-- ID
-- Title
-- Score
-- Synopsis
-- Episodes
-- Status
-- Genres
-- Image URLs
-
-This allows the Favorites section and saved anime information to remain available without an Internet connection.
-
-## Main Screens
-
-### Explore Anime
-Displays anime obtained from the API in an XML RecyclerView and provides real-time search.
-
-### Favorites
-Displays anime persisted locally with SQLite.
-
-### Anime Detail
-Built with Jetpack Compose and displays the selected anime's complete information.
-
-## Project Structure
-
-```
-com.example.animecatalog
-├── data
-│   ├── local
-│   ├── model
-│   ├── network
-│   └── repository
-├── ui
-│   ├── anime
-│   ├── favorites
-│   └── detail
-├── viewmodel
-├── MainActivity.kt
-└── SplashActivity.kt
-```
-
-## Author
-
-Martina Joaquin  
-Desarrollo de Aplicaciones Móviles II — 2026
+Link al video: [https://drive.google.com/file/d/1dv4BMQOyd_5aWDu7dFkY6RiKE4Op2Gy9/view?usp=sharing](https://drive.google.com/file/d/1dv4BMQOyd_5aWDu7dFkY6RiKE4Op2Gy9/view?usp=sharing)
